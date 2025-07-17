@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HStart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部区域 -->
+        <div class="header">
+            <div class="logo">StartPage</div>
+            <button class="settings-btn" id="settingsBtn">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+        
+        <!-- 时间显示区域 -->
+        <section class="time-section">
+            <div class="time-display" id="current-time">14:30:45</div>
+            <div class="date-display" id="current-date">2023年11月15日 星期三</div>
+            <div class="greeting" id="greeting-text">下午好，尊贵的用户！</div>
+        </section>
+        
+        <!-- 搜索区域 -->
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-title">探索互联网</div>
+                <div class="engine-selector">
+                    <button class="engine-btn active">Google</button>
+                    <button class="engine-btn">Bing</button>
+                    <button class="engine-btn">百度</button>
+                    <button class="engine-btn">DuckDuckGo</button>
+                </div>
+            </div>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="输入搜索内容...">
+                <button class="search-btn"><i class="fas fa-search"></i> 搜索</button>
+            </div>
+        </div>
+        
+        <!-- 快捷链接区域 -->
+        <div class="quick-links-container">
+            <div class="links-header">
+                <div class="links-title">快捷网站</div>
+            </div>
+            <div class="quick-links" id="quickLinks">
+                <!-- 链接将由JS动态生成 -->
+                
+                <!-- 添加链接按钮 -->
+                <div class="link-item add-link-btn" id="addLinkBtn">
+                    <i class="fas fa-plus link-icon"></i>
+                    <span class="link-name">添加快捷方式</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 名言警句区域 -->
+        <div class="quote-container">
+            <div class="quote-text" id="quoteText">"生活不是等待风暴过去，而是学会在雨中跳舞。"</div>
+            <div class="quote-author" id="quoteAuthor">- 维维安·格林</div>
+        </div>
+        
+        <footer class="footer">
+            <p>HStart By HXP| 让您的浏览体验更高效</p>
+            <p>无跟踪 · 无广告</p>
+        </footer>
+        
+        <!-- 设置面板 -->
+        <div class="settings-panel" id="settingsPanel">
+            <div class="settings-header">
+                <div class="settings-title">设置面板</div>
+                <button class="close-settings" id="closeSettings">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- 背景图片设置 -->
+            <div class="settings-section">
+                <h3 class="section-title">背景图片</h3>
+                <div class="background-options">
+                    <div class="bg-option active" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);" data-bg="gradient" data-type="preset"></div>
+                    <div class="bg-option" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');" data-bg="nature" data-type="preset"></div>
+                    <div class="bg-option" style="background-image: url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');" data-bg="mountain" data-type="preset"></div>
+                    <div class="bg-option" style="background-image: url('https://images.unsplash.com/photo-1476820865390-c52aeebb9891?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');" data-bg="city" data-type="preset"></div>
+                    <div class="bg-option" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');" data-bg="space" data-type="preset"></div>
+                    <div class="bg-option" id="customBgOption" data-bg="custom" data-type="custom">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>上传图片</span>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <label class="form-label">自定义背景图片</label>
+                    <input type="file" class="form-input" id="bgUpload" accept="image/*" style="padding: 10px;">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">背景模糊效果</label>
+                    <input type="range" min="0" max="20" value="5" class="form-input" id="bgBlur">
+                    <span id="blurValue">5px</span>
+                </div>
+            </div>
+            
+            <!-- 添加快捷链接表单 -->
+            <div class="settings-section">
+                <h3 class="section-title">添加快捷方式</h3>
+                <form class="link-form" id="linkForm">
+                    <div class="form-group">
+                        <label class="form-label">网站名称</label>
+                        <input type="text" class="form-input" id="linkName" placeholder="例如: GitHub" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">网站网址</label>
+                        <input type="url" class="form-input" id="linkUrl" placeholder="https://github.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">图标类名 (FontAwesome)</label>
+                        <input type="text" class="form-input" id="linkIcon" placeholder="fab fa-github">
+                        <small class="form-label">示例: fab fa-twitter, fas fa-envelope</small>
+                    </div>
+                    <button type="submit" class="save-btn">保存快捷方式</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
